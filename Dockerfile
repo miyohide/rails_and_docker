@@ -1,5 +1,5 @@
 FROM node:12.13 as node
-FROM ruby:2.6.5
+FROM ruby:2.6.5-slim
 
 ENV YARN_VERSION 1.19.1
 
@@ -14,7 +14,11 @@ RUN ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn \
   && ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npx
 
 ENV LANG C.UTF-8
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
+RUN apt-get update -qq && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV ENTRYKIT_VERSION 0.4.0
 RUN wget https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VERSION}/entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
