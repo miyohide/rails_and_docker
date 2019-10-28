@@ -36,4 +36,5 @@ RUN mkdir ${APP_HOME}
 WORKDIR ${APP_HOME}
 
 ENTRYPOINT [ \
-  "prehook", "ruby -v", "--"]
+  "prehook", "ruby -v", "--", \
+  "prehook", "bundle install -j4 --path /usr/local/bundle", "--"]
