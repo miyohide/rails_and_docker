@@ -18,6 +18,7 @@ services:
       - bundle:/usr/local/bundle
     depends_on:
       - db
+    command: ["bundle", "exec", "rails", "s", "-b", "0.0.0.0"]
 
 volumes:
   dbdata:
