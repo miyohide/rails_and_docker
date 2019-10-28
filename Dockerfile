@@ -30,5 +30,10 @@ RUN wget https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VERS
   && chmod +x /bin/entrykit \
   && entrykit --symlink
 
+ENV APP_HOME /usr/src/app
+
+RUN mkdir ${APP_HOME}
+WORKDIR ${APP_HOME}
+
 ENTRYPOINT [ \
   "prehook", "ruby -v", "--"]
