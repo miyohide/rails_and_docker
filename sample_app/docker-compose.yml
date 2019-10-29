@@ -16,6 +16,7 @@ services:
     volumes:
       - .:/usr/src/app
       - bundle:/usr/local/bundle
+      - node_modules:/usr/src/app/node_modules
     depends_on:
       - db
     command: ["bundle", "exec", "rails", "s", "-b", "0.0.0.0"]
@@ -24,4 +25,6 @@ volumes:
   dbdata:
     driver: local
   bundle:
+    driver: local
+  node_modules:
     driver: local
